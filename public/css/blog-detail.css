@@ -1,0 +1,98 @@
+.single-blog-wrapper {
+    background: #fff;
+    padding-bottom: 60px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.single-blog-header {
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.breadcrumb a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.single-post-title {
+    font-size: 2.5rem;
+    color: #1e3a8a;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+/* Image - Full and Natural */
+
+
+/* Typography for Content */
+.post-body {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.post-body p {
+    margin-bottom: 20px;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 25px;
+    background: #1e3a8a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    background: #ff6b6b;
+}
+
+/* ================= IMPROVED IMAGE SECTION ================= */
+.single-featured-image {
+    margin: 20px auto 40px;
+    max-width: 1000px; /* Keeps it aligned with your content width */
+    padding: 0 20px;
+}
+
+.single-featured-image img {
+    width: 100%;
+    /* This is the magic part: it limits the height so it's not "too heighty" */
+    height: 450px;
+
+    /* This ensures the image isn't squished or stretched */
+    object-fit: cover;
+
+    /* This keeps the focus on the center/top of the photo */
+    object-position: center;
+
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    display: block;
+}
+
+/* Mobile Responsive: Make it shorter on phones */
+@media (max-width: 768px) {
+    .single-featured-image img {
+        height: 250px;
+    }
+}
+@media (max-width: 768px) {
+    .single-post-title {
+        font-size: 1.8rem;
+    }
+}

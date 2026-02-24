@@ -1,0 +1,151 @@
+:root {
+    --primary: #5a67d8;
+    --primary-hover: #434190;
+    --bg-light: #f5f6fa;
+    --card-bg: #ffffff;
+    --text-dark: #2d3748;
+    --text-muted: #718096;
+    --accent: #667eea;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+}
+
+.contact-container {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+}
+
+.contact-container h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--accent);
+}
+
+.success-msg {
+    background: #e6fffa;
+    color: #0c9488;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    border-left: 4px solid var(--accent);
+}
+
+/* ================= FORM ================= */
+.contact-form label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: #fdfdfd;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 12px rgba(102, 126, 234, 0.25);
+}
+
+/* ================= BUTTON ================= */
+.contact-form button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #667eea, #5a67d8);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.contact-form button:hover {
+    background: linear-gradient(90deg, #5a67d8, #434190);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(102, 126, 234, 0.35);
+}
+
+/* ================= PTE TITLE ================= */
+.pte-prep-title {
+    text-align: center;
+    font-weight: 700;
+    color: #1e3a8a;
+    font-size: 45px;
+    margin-bottom: 40px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 30px 20px;
+    }
+
+    .contact-container h2 {
+        font-size: 1.9rem;
+    }
+
+    .contact-form button {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 25px 15px;
+    }
+
+    .contact-container h2 {
+        font-size: 1.6rem;
+    }
+
+    .contact-form button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}

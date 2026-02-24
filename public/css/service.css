@@ -1,0 +1,167 @@
+:root {
+    --primary-dark: #1a2e44;
+    --accent-blue: #3b82f6;
+    --bg-soft: #f8fafc;
+    --text-gray: #64748b;
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--bg-soft);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding:  0;
+}
+
+.services-section {
+    max-width: 1200px;
+    margin:  auto;
+    padding:  20px;
+}
+
+/* Header Styling */
+.services-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.badge {
+    background: #eff6ff;
+    color: var(--accent-blue);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.services-header h1 {
+    color: var(--primary-dark);
+    font-size: 2.5rem;
+    margin: 20px 0 15px;
+    font-weight: 800;
+}
+
+.services-header p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+/* Grid Layout */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    gap: 25px;
+}
+
+/* Premium Card Design */
+.service-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 24px; /* Large rounded corners */
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon Box */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background: #eff6ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.icon-box i {
+    font-size: 24px;
+    color: var(--accent-blue);
+}
+
+.blue-icon { background: #e0f2fe; }
+
+/* Typography */
+.service-card h3 {
+    color: var(--primary-dark);
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.service-card p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+}
+/* --- Base Icon Box Style --- */
+.icon-box {
+    width: 65px;
+    height: 65px;
+    background: #eff6ff; /* Light blue starting background */
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transition */
+}
+
+.icon-box i {
+    font-size: 26px;
+    color: #3b82f6; /* Blue icon color */
+    transition: all 0.4s ease;
+}
+
+/* --- Whole Div Hover Animation --- */
+.service-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0,0,0,0.02);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth lift */
+}
+
+.service-card:hover {
+    transform: translateY(-12px); /* Lifts the whole div */
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.12); /* Adds a themed glow shadow */
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* --- Icon & Background Change on Hover --- */
+.service-card:hover .icon-box {
+    background: #1e3a8a; /* Changes to Dark Blue */
+    transform: rotate(5deg); /* Subtle tilt for style */
+}
+
+.service-card:hover .icon-box i {
+    color: #ffffff; /* Icon turns white */
+    transform: scale(1.2); /* Icon grows slightly */
+}
+
+/* --- Title Animation (Optional) --- */
+.service-card h3 {
+    transition: color 0.3s ease;
+}
+
+.service-card:hover h3 {
+    color: #1e3a8a; /* Title darkens slightly */
+}
+
+/* Responsive for Mobile */
+@media (max-width: 992px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+}

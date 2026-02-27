@@ -184,28 +184,10 @@
 
   </div>
 </section>
-    <!-- STRUCTURE -->
-    {{-- <section class="section dark">
-        <div class="container center">
-            <h2>Test Structure</h2>
-            <div class="line"></div>
-            <p>
-                IELTS consists of four sections: Listening, Reading, Writing, and Speaking.
-            </p>
-        </div>
-    </section> --}}
 
-    {{-- <!-- CTA -->
-    <section class="cta">
-        <div class="container center">
-            <h2>Start Your IELTS Journey Today</h2>
-            <p>Take the first step toward your academic and professional goals.</p>
-            <a href="/contactus" class="btn primary big">Book Free Consultation →</a>
-        </div>
-    </section> --}}
 
     {{-- contact us --}}
-<h2 class="pte-prep-title">Kickstart Your PTE Prep with OZ Support</h2>
+<h2 class="pte-prep-title">Kickstart Your IELTS Prep with OZ Support</h2>
 
 <section class="contact-section">
     <div class="contact-container">

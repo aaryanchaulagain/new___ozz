@@ -28,8 +28,10 @@ Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.log
 // Contact submit
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
-// Delete contact
-Route::get('/admin/contact/delete/{id}', [AdminController::class, 'deleteContact'])->name('admin.contact.delete');
+//  admin approve/ reject contact
+// Change 'get' to 'post' here
+Route::post('/admin/contact/approve/{id}', [AdminController::class, 'approveContact'])->name('admin.contact.approve');
+Route::post('/admin/contact/reject/{id}', [AdminController::class, 'rejectContact'])->name('admin.contact.reject');
 
 // Testimonials
 Route::post('/admin/testimonial/store', [AdminController::class, 'storeTestimonial'])->name('admin.testimonial.store');
@@ -41,6 +43,11 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog');             
 Route::get('/blog/{id}', [HomeController::class, 'showBlog'])->name('blog.show'); // Single blog page
 Route::post('/admin/blog/store', [AdminController::class, 'store'])->name('admin.blog.store');
 Route::get('/admin/blog/delete/{id}', [BlogController::class, 'destroy'])->name('admin.blog.delete');
+// Show edit form
+Route::get('/admin/blog/edit/{id}', [AdminController::class, 'edit'])->name('admin.blog.edit');
+
+// Update blog
+Route::post('/admin/blog/update/{id}', [AdminController::class, 'update'])->name('admin.blog.update');
 
 
 // Update CEO Name & Message

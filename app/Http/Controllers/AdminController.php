@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactApproved;
+use App\Mail\ContactRejected;
 
 class AdminController extends Controller
 {
@@ -68,23 +71,26 @@ class AdminController extends Controller
         return redirect()->route('admin.login.form');
     }
 
-    // Delete contact
-    public function deleteContact($id)
-    {
-        if (!Session::has('admin_id')) {
-            return redirect()->route('admin.login.form');
-        }
+   public function approveContact($id) {
+        $contact = Contact::findOrFail($id);
+        $contact->status = 'approved';
+        $contact->save();
 
-        $contact = Contact::find($id);
+        // Already working, but make sure the Mailable is imported
+        Mail::to($contact->email)->send(new ContactApproved($contact));
 
-        if ($contact) {
-            $contact->delete();
-            return redirect()->route('admin.dashboard')
-                ->with('success', 'Contact deleted successfully!');
-        }
+        return back()->with('success', 'Contact approved and user notified.');
+    }
 
-        return redirect()->route('admin.dashboard')
-            ->with('error', 'Contact not found!');
+    public function rejectContact($id) {
+        $contact = Contact::findOrFail($id);
+        $contact->status = 'rejected';
+        $contact->save();
+
+        // ADD THIS LINE to fix the missing notification:
+        Mail::to($contact->email)->send(new ContactRejected($contact));
+
+        return back()->with('success', 'Contact rejected and user notified.');
     }
 
     // store ceo image
@@ -270,6 +276,45 @@ class AdminController extends Controller
 
         return back()->with('success', 'Blog added successfully');
     }
+    // edit blog
+
+    public function edit($id)
+{
+    $blog = Blog::findOrFail($id);
+    return view('admin.editblog', compact('blog')); // Create this view
+}
+
+// update blog
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'title' => 'required',
+        'content' => 'required',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+    ]);
+
+    $blog = Blog::findOrFail($id);
+    $blog->title = $request->title;
+    $blog->content = $request->content;
+
+    if ($request->hasFile('image')) {
+        $path = public_path('uploads/blogs');
+
+        if (!File::isDirectory($path)) {
+            File::makeDirectory($path, 0777, true, true);
+        }
+
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move($path, $imageName);
+        $blog->image = $imageName;
+    }
+
+    $blog->save();
+
+    return redirect()->route('blog')->with('success', 'Blog updated successfully');
+}
+
 // App\Http\Controllers\AdminController.php
 
 public function storeTestimonial(Request $request)

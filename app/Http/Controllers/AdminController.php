@@ -70,8 +70,9 @@ class AdminController extends Controller
         Session::forget('admin_id');
         return redirect()->route('admin.login.form');
     }
+// approve /Reject Contact
 
-   public function approveContact($id) {
+public function approveContact($id) {
         $contact = Contact::findOrFail($id);
         $contact->status = 'approved';
         $contact->save();
@@ -93,6 +94,31 @@ class AdminController extends Controller
         return back()->with('success', 'Contact rejected and user notified.');
     }
 
+   public function respondContact($id, $action)
+{
+    $contact = Contact::findOrFail($id);
+
+    if ($action === 'approve') {
+        $contact->status = 'approved';
+        $msg = "Your contact form has been approved by the admin.";
+    } else {
+        $contact->status = 'rejected';
+        $msg = "Your contact form has been rejected by the admin.";
+    }
+
+    $contact->save();
+
+    // Notify user
+    Mail::raw(
+        "Hello {$contact->name},\n\n{$msg}\n\nThank you!",
+        function ($message) use ($contact) {
+            $message->to($contact->email)
+                    ->subject('Update on your Contact Form');
+        }
+    );
+
+    return back()->with('success', 'User has been notified!');
+}
     // store ceo image
     public function storeCeoImage(Request $request)
     {

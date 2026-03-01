@@ -35,8 +35,14 @@ public function submit(Request $request)
     'status' => 'pending',
 ]);
 
-    // Notify admin via email
-    Mail::to('aryanchaulagain35@gmail.com')->send(new AdminContactNotification($contact));
+    //  Notify admin
+    Mail::raw(
+        "New contact form submitted:\n\nName: {$contact->name}\nEmail: {$contact->email}\nMessage: {$contact->message}",
+        function ($message) {
+            $message->to('powerlaw35@gmail.com') // replace with your admin email
+                    ->subject('New Contact Form Submission');
+        }
+    );
 
     return back()->with('success', 'Your message has been submitted successfully!');
 }

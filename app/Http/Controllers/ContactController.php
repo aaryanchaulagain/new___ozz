@@ -39,7 +39,7 @@ public function submit(Request $request)
     Mail::raw(
         "New contact form submitted:\n\nName: {$contact->name}\nEmail: {$contact->email}\nMessage: {$contact->message}",
         function ($message) {
-            $message->to('powerlaw35@gmail.com') // replace with your admin email
+            $message->to('ozconnect34@gmail.com') // replace with your admin email
                     ->subject('New Contact Form Submission');
         }
     );
